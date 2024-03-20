@@ -87,10 +87,11 @@ where
 {
     #[inline]
     fn get_from_iter(&self, i: core::slice::Iter<'_, std::string::String>) -> Option<FieldValue> {
-        if i.len() > 0 {
-            return None;
+        if let Some(v) = self {
+            v.get_from_iter(i)
+        } else {
+            None
         }
-        self.get_from_iter(i)
     }
 }
 
